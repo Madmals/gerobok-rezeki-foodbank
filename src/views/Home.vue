@@ -1,8 +1,5 @@
 <template>
   <div class="home">
-    <!-- <div class="area">
-      <Tambah v-if="showTambah" />
-    </div> -->
     <div class="container p-2">
       <nav
         class="h-[10vh] flex justify-center place-items-center bg-gray-200 border-black"
