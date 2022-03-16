@@ -33,17 +33,24 @@
     >
       ADD
     </button>
+    <div class="p-4 pl-0">
+      <v-select label="selection"  :options="options">
+      </v-select>
+    </div>
   </div>
 </template>
 
 <script>
+import 'vue-select/dist/vue-select.css';
 import { db } from "../db/db";
+
 export default {
   name: "add",
   data() {
     return {
       barang: "",
       quantity: "",
+      options:['a','b','c']
     };
   },
   methods: {
@@ -65,4 +72,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.style-chooser .vs__search::placeholder,
+.style-chooser .vs__dropdown-toggle,
+.style-chooser .vs__dropdown-menu {
+  background: #dfe5fb;
+  border: none;
+  color: #394066;
+  text-transform: lowercase;
+  font-variant: small-caps;
+}
+
+.style-chooser .vs__clear,
+.style-chooser .vs__open-indicator {
+  fill: #394066;
+}
+</style>
