@@ -34,15 +34,18 @@
       ADD
     </button>
     <div class="p-4 pl-0">
-      <v-select label="selection"  :options="options">
+      <v-select label="text" v-model="selected" :options="listbarang">
       </v-select>
+        {{ selected.text }} {{selected.quantity}}
     </div>
   </div>
 </template>
 
 <script>
-import 'vue-select/dist/vue-select.css';
+import "vue-select/dist/vue-select.css";
 import { db } from "../db/db";
+import { liveQuery } from "dexie";
+import { useObservable } from "@vueuse/rxjs";
 
 export default {
   name: "add",
@@ -50,7 +53,16 @@ export default {
     return {
       barang: "",
       quantity: "",
-      options:['a','b','c']
+      selected: "",
+    };
+  },
+  setup() {
+    return {
+      listbarang: useObservable(
+        liveQuery(async () => {
+          return await db.listbarang.toArray();
+        })
+      ),
     };
   },
   methods: {
@@ -59,13 +71,12 @@ export default {
     },
     tambahItem() {
       // this.quantity++;
-     this.quantity++
+      this.quantity++;
     },
     kurangItem() {
-      if(this.quntity > 0)
-      this.quantity--;
-      else{
-        this.quantity = 0
+      if (this.quntity > 0) this.quantity--;
+      else {
+        this.quantity = 0;
       }
     },
   },
