@@ -22,7 +22,7 @@
         >
           <router-link
             class="h-[5vh] w-[10vw] mt-4 text-center bg-indigo-700"
-            to="/"
+            to="/" @click="showTambah = false; showDerma = false"
             >Home</router-link
           >
           <router-view />

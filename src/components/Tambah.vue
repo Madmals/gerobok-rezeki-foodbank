@@ -36,7 +36,41 @@
     <div class="p-4 pl-0">
       <v-select label="text" v-model="selected" :options="listbarang">
       </v-select>
-        {{ selected.text }} {{selected.quantity}}
+      <div v-if="selected" class="border-2 border-gray-800 mt-4 p-1 flex">
+        <div  class="w-[70vw]  p-2">
+          {{ selected.text }}
+        </div>
+        <div class="invisible">
+          {{render2()}}
+        </div>
+        <div
+          class="w-[50vw] h-[7vh] text-center flex items-center justify-center bg-gray-200"
+        >
+          <div class="border-2 border-black p-1" >
+            Quantity:
+            {{ updateQuantity}}
+          </div>
+
+          <button class="p-2" @click="tambahItem">
+            <i class="fas fa-plus"></i>
+          </button>
+          <input
+            type="text"
+            v-model="quantity"
+            class="w-[3vw] border-2 border-black rounded text-center"
+          />
+
+          <button class="p-2" @click="kurangItem">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button
+          @click="test"
+            class="rounded-full bg-indigo-500 px-4 py-2 text-white"
+          >
+            ADD
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -52,8 +86,9 @@ export default {
   data() {
     return {
       barang: "",
-      quantity: "",
+      quantity: 0,
       selected: "",
+      updateQuantity:""
     };
   },
   setup() {
@@ -70,16 +105,29 @@ export default {
       db.addBarang(this.barang, this.quantity);
     },
     tambahItem() {
-      // this.quantity++;
       this.quantity++;
     },
     kurangItem() {
-      if (this.quntity > 0) this.quantity--;
+      if (this.quantity > 0) this.quantity--;
       else {
         this.quantity = 0;
       }
     },
+    test() {
+      db.listbarang.update(this.selected.id, {
+        quantity: parseInt(this.selected.quantity) + parseInt(this.quantity),
+      });
+    },
+   async render2(){
+      const ab = await db.listbarang.get(this.selected.id)
+      this.updateQuantity = ab.quantity
+    },
   },
+  // updated(){
+  //   console.log(this.selected)
+  //   if(typeof this.selected.text === 'string')
+  //     return this.render2()
+  // }
 };
 </script>
 
