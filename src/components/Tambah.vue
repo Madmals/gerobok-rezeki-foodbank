@@ -1,7 +1,7 @@
 <template>
   <div class="p-5">
     <fieldset>
-      <legend>Tambah Barang</legend>
+      <legend class="text-2xl font-bold">Tambah Barang</legend>
       <label for="name"
         >Barang:
         <input

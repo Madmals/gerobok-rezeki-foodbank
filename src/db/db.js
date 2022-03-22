@@ -17,6 +17,7 @@ export class Database extends Dexie {
 			text: barang, timestamp: new Date(),quantity:quantitys
 		})
 	}
+	
 
 
 
