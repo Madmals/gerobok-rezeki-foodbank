@@ -9,4 +9,6 @@ import vSelect from 'vue-select'
 
 createApp(App).use(store).use(router)
 	.component('v-select', vSelect)
-	.mount("#app");
+	.mount("#app")
+
+

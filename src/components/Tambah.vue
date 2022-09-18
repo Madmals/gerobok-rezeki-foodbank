@@ -33,6 +33,7 @@
     >
       ADD
     </button>
+    <h2>*Tekan add kemudian pilih dari senarai</h2>
     <div class="p-4 pl-0">
       <v-select label="text" v-model="selected" :options="listbarang">
       </v-select>

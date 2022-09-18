@@ -14,14 +14,14 @@
           <h1 class="text-black-300 text-3xl font-bold">
             <i class="fas fa-grip-lines-vertical text-blue-500"></i>
             Hidup Tok Din
-            <i class="fas fa-grip-lines-vertical text-blue-500"></i> Kami belia
-            menyokong pimpinan Tok Din
           </h1>
         </marqueeText>
       </nav>
-      <section class="h-[80vh] border-2 border-black bg-gray-400 p-4 flex flex-col sm:flex-row">
+      <section
+        class="h-[80vh] border-2 border-black bg-gray-400 p-4 flex flex-col sm:flex-row"
+      >
         <aside
-          class="sm:w-[20vw] w-[85vw] bg-gray-600 h-[20vh] sm:h-[70vh] flex flex-row sm:flex-col align-middle items-center p-2 pt-0 "
+          class="sm:w-[20vw] w-[85vw] bg-gray-600 h-[20vh] sm:h-[70vh] flex flex-row sm:flex-col align-middle items-center p-2 pt-0"
         >
           <router-link
             class="h-[5vh] w-[30vw] sm:w-[10vw] mt-4 text-center bg-indigo-700"
@@ -64,22 +64,33 @@
                 src="https://img.icons8.com/external-becris-flat-becris/64/000000/external-charity-business-world-becris-flat-becris.png"
               />
             </div>
-            <h1 class="h-[5vh] sm:h-[8vh] text-l sm:text-xl font-extrabold bg-indigo-200 sm:p-2 sm:mt-7 mt-2 mb-4">
+            <h1
+              class="h-[5vh] sm:h-[8vh] text-l sm:text-xl font-extrabold bg-indigo-200 sm:p-2 sm:mt-7 mt-2 mb-4"
+            >
               Senarai Barang
             </h1>
-            <section class="h-[40vh] sm:h-[37vh] flex flex-col sm:flex-row justify-center bg-gray-400 pl-8 sm:pl-0">
-
-            <table class="w-[72vw] sm:w-[50vw] h-[30vh] sm:h-[36vh] p-2 flex flex-col border-2 border-black shadow-lg bg-white  overflow-scroll" >
-              <tr class="flex border-2 border-gray-500 justify-around content-center bg-blue-100">
-                <th class="w-[20vw]  py-4">Barang</th>
-                <th class="py-4 border-2">Quantity</th>
-              </tr>
-              <tr class="flex justify-around content-center p-1"  v-for="list in listbarang" :key="list.id">
-                <td class="w-[20vw]">{{list.text}}</td>
-                <td>{{list.quantity}}</td>
-              </tr>
-            </table>
-            <h3>**Senarai barang kosong maka kena tambah barang dulu**</h3>
+            <section
+              class="h-[40vh] sm:h-[37vh] flex flex-col sm:flex-row justify-center bg-gray-400 pl-8 sm:pl-0"
+            >
+              <table
+                class="w-[72vw] sm:w-[50vw] h-[30vh] sm:h-[36vh] p-2 flex flex-col border-2 border-black shadow-lg bg-white overflow-scroll"
+              >
+                <tr
+                  class="flex border-2 border-gray-500 justify-around content-center bg-blue-100"
+                >
+                  <th class="w-[20vw] py-4">Barang</th>
+                  <th class="py-4 border-2">Quantity</th>
+                </tr>
+                <tr
+                  class="flex justify-around content-center p-1"
+                  v-for="list in listbarang"
+                  :key="list.id"
+                >
+                  <td class="w-[20vw]">{{ list.text }}</td>
+                  <td>{{ list.quantity }}</td>
+                </tr>
+              </table>
+              <h3>**Senarai barang kosong maka kena tambah barang dulu**</h3>
             </section>
           </section>
         </section>
@@ -111,6 +122,9 @@ export default {
       homesArea: true,
     };
   },
+  computed: {
+  console: () => console.log('abu')
+},
   setup() {
     return {
       listbarang: useObservable(
